@@ -8,4 +8,5 @@
       dest: C:\ExecutableSample.exe
    - name: Execute Command 
      ansible.windows.win_command:
-      cmd: C:\ExecutableSample.exe
+      cmd: C:\ExecutableSample
+      
