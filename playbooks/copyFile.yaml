@@ -4,8 +4,7 @@
   tasks:
    - name: Copy Executable File
      ansible.windows.win_copy:
-      src: https://github.com/felipemartinezdexcom/testAWX2/blob/main/ExecutableSample.exe
-      remote_src: true
+      src: Files/ExecutableSample.exe
       dest: C:\ExecutableSample.exe
    - name: Execute Command 
      ansible.windows.win_command:
