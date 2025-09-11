@@ -4,7 +4,7 @@
   tasks:
    - name: Copy Executable File
      ansible.windows.win_copy:
-      src: Files/ExecutableSample.exe
+      src: Files/Test.txt
       dest: C:\ExecutableSample.exe
    - name: Execute Command 
      ansible.windows.win_command:
