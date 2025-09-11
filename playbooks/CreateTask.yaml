@@ -3,7 +3,7 @@
   hosts: windows
   tasks:
    - name: create new schedule task
-     win_scheduled_task:
+     community.windows.win_scheduled_task:
        name: Created Task 1602pm
        description: create new schedule task for infosec
        enabled: true
