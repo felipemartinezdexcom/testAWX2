@@ -1,0 +1,16 @@
+---
+- name: Create Task
+  hosts: windows
+  tasks:
+   - name: create new schedule task
+     community.windows.win_scheduled_task:
+     description: create new schedule task for infosec
+     enabled: true
+     actions:
+      - path: "C:\ExecutableSample.exe"
+
+    triggers:
+      - type: daily
+        start_boundary: '15:55:00'
+    state: present
+    enabled: true
