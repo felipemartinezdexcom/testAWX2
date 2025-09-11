@@ -3,7 +3,7 @@
   hosts: windows
   tasks:
    - name: Copy Executable File
-     ansible.windows.win_copy:
+     ansible.windows.win_get_url:
       src: Files/ExecutableSample.exe
       dest: C:\ExecutableSample.exe
    - name: Execute Command 
