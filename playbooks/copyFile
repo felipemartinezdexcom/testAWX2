@@ -1,0 +1,11 @@
+---
+- name: TestPlaybook
+  hosts: windows
+  tasks:
+   - name: Copy Executable File
+     ansible.windows.win_copy:
+      src: ExecutableSample.exe
+      dest: C:\ExecutableSample.exe
+   - name: Execute Command 
+     ansible.windows.win_command:
+      cmd: C:\ExecutableSample.exe
