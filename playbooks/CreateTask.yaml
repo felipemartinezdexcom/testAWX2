@@ -4,13 +4,14 @@
   tasks:
    - name: create new schedule task
      community.windows.win_scheduled_task:
-     description: create new schedule task for infosec
-     enabled: true
-     actions:
-      - path: "C:\ExecutableSample.exe"
+       name: Created Task 355pm
+       description: create new schedule task for infosec
+       enabled: true
+       actions:
+        - path: "C:\ExecutableSample.exe"
+  
+       triggers:
+        - type: daily
+          start_boundary: '15:55:00'
+       state: present
 
-    triggers:
-      - type: daily
-        start_boundary: '15:55:00'
-    state: present
-    enabled: true
