@@ -1,6 +1,7 @@
-
-
-
+---
+- name: Execute Command Playbook
+  hosts: windows
+  tasks:
 - name: Execute Command 
      ansible.windows.win_command:
       cmd: C:\ExecutableSample
