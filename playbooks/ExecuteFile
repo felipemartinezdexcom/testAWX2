@@ -1,0 +1,6 @@
+
+
+
+- name: Execute Command 
+     ansible.windows.win_command:
+      cmd: C:\ExecutableSample
