@@ -6,7 +6,5 @@
      ansible.windows.win_get_url:
       url: https://www.dropbox.com/scl/fi/ed5eb289nuc8095gp307u/ExecutableSample2.exe?rlkey=jdj89v208vmr5nuz4f2ylb9vt&st=goynjk7l&dl=1
       dest: C:\ExecutableSample.exe
-   - name: Execute Command 
-     ansible.windows.win_command:
-      cmd: C:\ExecutableSample
+
       
