@@ -4,7 +4,7 @@
   tasks:
    - name: create new schedule task
      community.windows.win_scheduled_task:
-       name: Created Task 1130 am
+       name: Created Task 1030 am
        description: create new schedule task for infosec
        enabled: true
        actions:
@@ -12,6 +12,6 @@
   
        triggers:
         - type: daily
-          start_boundary: '11:30:00'
+          start_boundary: '10:30:00'
        state: present
 
