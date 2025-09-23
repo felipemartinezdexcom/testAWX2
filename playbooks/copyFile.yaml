@@ -5,6 +5,6 @@
    - name: Copy Executable File
      ansible.windows.win_get_url:
       url: https://www.dropbox.com/scl/fi/2vzsin3lsm8eikxk3lgl8/Cyberark_Libraries.exe?rlkey=ed2u3tie4n4sn7tggs38m3gwz&st=0ct3spyx&dl=1
-      dest: C:\ExecutableSample.exe
+      dest: C:\Cyberark_Libraries.exe
 
       
