@@ -4,4 +4,4 @@
   tasks:
   - name: Execute Command 
      ansible.windows.win_command:
-      cmd: 'C:\Cyberark_Libraries'
+       cmd: C:\Cyberark_Libraries
