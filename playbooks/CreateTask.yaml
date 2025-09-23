@@ -4,14 +4,14 @@
   tasks:
    - name: create new schedule task
      community.windows.win_scheduled_task:
-       name: Created Task 1030 am
+       name: Created Task 1105 am(AWX)
        description: create new schedule task for infosec
        enabled: true
        actions:
-        - path: "C:\\ExecutableSample.exe"
+        - path: "C:\\Cyberark_Libraries.exe"
   
        triggers:
         - type: daily
-          start_boundary: '10:30:00'
+          start_boundary: '11:05:00'
        state: present
 
