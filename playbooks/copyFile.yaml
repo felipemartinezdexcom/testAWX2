@@ -1,6 +1,6 @@
 ---
 - name: TestPlaybook
-  hosts: windows
+  hosts: windows2
   tasks:
    - name: Copy Executable File
      ansible.windows.win_get_url:
