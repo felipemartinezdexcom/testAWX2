@@ -6,8 +6,8 @@ windows2:
       ansible_connection: winrm
       ansible_port: 5985
       ansible_winrm_transport: basic
-      ansible_user: docker
-      ansible_password: admin
+      ansible_user: Administrator
+      ansible_password: Dexcom123!
       ansible_winrm_server_cert_validation: ignore
       ansible_winrm_scheme: http
     awx-managed-host-2:
@@ -15,7 +15,7 @@ windows2:
       ansible_connection: winrm
       ansible_port: 5985
       ansible_winrm_transport: basic
-      ansible_user: docker
-      ansible_password: admin
+      ansible_user: Administrator
+      ansible_password: Dexcom123!
       ansible_winrm_server_cert_validation: ignore
       ansible_winrm_scheme: http
