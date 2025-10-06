@@ -5,7 +5,7 @@ windows2:
       ansible_host: 192.168.0.70
       ansible_connection: winrm
       ansible_port: 5985
-      ansible_winrm_transport: basic
+      ansible_winrm_transport: ntlm
       ansible_user: AWX
       ansible_password: Dexcom123!
       ansible_winrm_server_cert_validation: ignore
@@ -14,7 +14,7 @@ windows2:
       ansible_host: 192.168.0.71
       ansible_connection: winrm
       ansible_port: 5985
-      ansible_winrm_transport: basic
+      ansible_winrm_transport: ntlm
       ansible_user: AWX
       ansible_password: Dexcom123!
       ansible_winrm_server_cert_validation: ignore
