@@ -1,0 +1,6 @@
+    - name: Ping all hosts
+      hosts: windows2  # Or specify a specific host group or host name from your inventory
+      gather_facts: false # Optional: Set to true if you need host facts for other tasks
+      tasks:
+        - name: Test connectivity with ping module
+          ansible.builtin.ping:
