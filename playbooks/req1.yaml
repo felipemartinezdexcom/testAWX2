@@ -1,6 +1,6 @@
 - name: Install windows features
   hosts: windows2 # Replace with your target Windows host group
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: Install desired Windows features
