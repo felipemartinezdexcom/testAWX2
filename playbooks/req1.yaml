@@ -1,5 +1,5 @@
 - name: Run PowerShell command as administrator on Windows
-  hosts: your_windows_hosts # Replace with your target Windows host group
+  hosts: windows2 # Replace with your target Windows host group
   gather_facts: false
 
   tasks:
