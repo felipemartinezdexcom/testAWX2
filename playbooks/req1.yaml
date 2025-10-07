@@ -1,6 +1,6 @@
 - name: Run PowerShell command as administrator on Windows
   hosts: windows2 # Replace with your target Windows host group
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: Execute a PowerShell command with elevated privileges
