@@ -1,1 +1,7 @@
-
+---
+- name: Reboot remote server
+  hosts: windows2
+  become: yes # Use this if you need elevated privileges for rebooting
+  tasks:
+    - name: Reboot the machine
+      ansible.builtin.reboot:
