@@ -49,4 +49,7 @@
         state: present
         include_sub_features: true # Install sub-features if required
         restart: true
- 
+    - name: Reboot the server
+      ansible.builtin.reboot:
+        reboot_timeout: 600  # Optional: Set a custom timeout for the reboot (default is 600 seconds)
+        post_reboot_delay: 30 
