@@ -41,7 +41,6 @@
            - MSMQ-Server
            - FS-SMB1
            - PowerShell
-           - PowerShell-ISE
            - WAS
            - WAS-Process-Model
            - WAS-Config-APIs
