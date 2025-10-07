@@ -1,7 +1,10 @@
 ---
-- name: Reboot remote server
-  hosts: windows2
-  become: yes # Use this if you need elevated privileges for rebooting
+- name: Reboot Windows Server
+  hosts: windows2  # Replace with your Windows host group
+  gather_facts: true
   tasks:
-    - name: Reboot the machine
-      ansible.builtin.reboot:
+    - name: Reboot the Windows server
+      ansible.windows.win_reboot:
+        reboot_timeout: 360  # Wait for 360 seconds for the server to come back online
+        pre_reboot_delay: 30 # Wait 30 seconds before initiating the reboot
+        # Add other options as needed, such as post_reboot_delay, connect_timeout, etc.
