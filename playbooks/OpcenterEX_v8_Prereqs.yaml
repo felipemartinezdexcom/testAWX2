@@ -6,49 +6,47 @@
     - name: Install desired Windows features
       ansible.windows.win_feature:
         name: 
-        Web-Server,
-        Web-WebServer,
-        Web-Common-Http,
-        Web-Default-Doc,
-        Web-Dir-Browsing,
-        Web-Http-Errors,
-        Web-Static-Content,
-        Web-Http-Redirect,
-        Web-Health,
-        Web-Http-Logging,
-        Web-Custom-Logging,
-        Web-Log-Libraries,
-        Web-ODBC-Logging,
-        Web-Request-Monitor,
-        Web-HTTP-Tracing,
-        Web-Performance,
-        Web-Stat-Compression,
-        Web-Dyn-Compression,
-        Web-Security,
-        Web-Filtering,
-        Web-Digest-Auth,
-        Web-Url-Auth,
-        Web-Windows-Auth,
-        Web-App-Dev,
-        Web-AppInit,
-        Web-Net-Ext45,
-        Web-Asp-Net45,
-        Web-ISAPI-Ext,
-        Web-ISAPI-Filter,
-        Web-Includes,
-        Web-Mgmt-Tools,
-        Web-Mgmt-Console,
-        Web-Mgmt-Compat,
-        Web-Metabase,
-        Web-Lgcy-Mgmt-Console,
-        Web-Scripting-Tools,
-        NET-Framework-45-ASPNET,
-        NET-WCF-HTTP-Activation45,
-        WAS,
-        WAS-Process-Model,
-        WAS-Config-APIs
-      
-
+           - Web-Server
+           - Web-WebServer
+           - Web-Common-Http
+           - Web-Default-Doc
+           - Web-Dir-Browsing
+           - Web-Http-Errors
+           - Web-Static-Content
+           - Web-Http-Redirect
+           - Web-Health
+           - Web-Http-Logging
+           - Web-Custom-Logging
+           - Web-Log-Libraries
+           - Web-ODBC-Logging
+           - Web-Request-Monitor
+           - Web-HTTP-Tracing
+           - Web-Performance
+           - Web-Stat-Compression
+           - Web-Dyn-Compression
+           - Web-Security
+           - Web-Filtering
+           - Web-Digest-Auth
+           - Web-Url-Auth
+           - Web-Windows-Auth
+           - Web-App-Dev
+           - Web-AppInit
+           - Web-Net-Ext45
+           - Web-Asp-Net45
+           - Web-ISAPI-Ext
+           - Web-ISAPI-Filter
+           - Web-Includes
+           - Web-Mgmt-Tools
+           - Web-Mgmt-Console
+           - Web-Mgmt-Compat
+           - Web-Metabase
+           - Web-Lgcy-Mgmt-Console
+           - Web-Scripting-Tools
+           - NET-Framework-45-ASPNET
+           - NET-WCF-HTTP-Activation45
+           - WAS
+           - WAS-Process-Model
+           - WAS-Config-APIs
 
         state: present
         include_sub_features: true # Install sub-features if required
