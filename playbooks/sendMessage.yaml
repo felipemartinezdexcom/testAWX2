@@ -1,0 +1,12 @@
+- name: Send a message box to Windows hosts
+  hosts: windows2
+  vars:
+    testVariable:""
+  tasks:
+    - name: Display a critical message
+      community.windows.win_msg:
+        msg: "Important System Alert: Please save your work and log off.{{testVariable}}"
+        title: "System Maintenance"
+        buttons: "OK"
+        icon: "critical"
+        timeout: 60 # Message box will auto-close after 60 seconds
