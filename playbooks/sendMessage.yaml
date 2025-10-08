@@ -1,7 +1,7 @@
 - name: Send a message box to Windows hosts
   hosts: windows2
   vars:
-    testVariable:""
+    testVariable: ""
   tasks:
     - name: Display a critical message
       community.windows.win_msg:
