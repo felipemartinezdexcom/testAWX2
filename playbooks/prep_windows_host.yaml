@@ -1,0 +1,74 @@
+- name: Install windows features
+  ansible.windows.win_feature:
+    name:
+      - NET-WCF-HTTP-Activation45
+      - NET-WCF-MSMQ-Activation45
+      - NET-WCF-Pipe-Activation45
+      - NET-WCF-TCP-Activation45
+      - NET-Framework-45-ASPNET
+      - Web-DAV-Publishing
+      - Web-Includes
+      - Web-Mgmt-Tools
+      - Web-Server
+      - Web-WebSockets
+      - Web-Dyn-Compression
+      - Web-Custom-Logging
+      - Web-Custom-Logging
+      - Web-ODBC-Logging
+      - Web-Request-Monitor
+      - Web-Performance
+      - Web-Stat-Compression
+      - Web-Security
+      - Web-Filtering
+      - Web-Digest-Auth
+      - Web-Url-Auth
+      - Web-Windows-Auth
+      - Web-AppInit
+      - Web-Net-Ext45
+      - Web-Asp-Net45
+      - Web-ISAPI-Ext
+      - Web-ISAPI-Filter
+      - Web-Includes
+      - Web-Mgmt-Console
+      - Web-Mgmt-Compat
+      - Web-Metabase
+      - Web-Lgcy-Mgmt-Console
+      - Web-Scripting-Tools
+      - Web-HTTP-Tracing
+      - Web-AppInit
+      - WAS
+      - WAS-Process-Model
+      - WAS-Config-APIs
+      - WoW64-Support
+    source: C:\Windows\WinSxS
+    state: present
+  register: win_feature
+
+- name: Reboot if installing features requires it
+  ansible.windows.win_reboot:
+  when: win_feature.reboot_required
+
+- name: Create CamstarAdmin user
+  ansible.windows.win_user:
+    name: [windowsUsername]
+    fullname: [windowsusername]
+    password: [windowsuserpassword]
+    password_never_expires: true
+    groups: Administrators
+    state: present
+
+- name: Create the prerequisites folder
+  ansible.windows.win_file:
+    path: "{{ prerequisites_folder }}\\prerequisites\\"
+    state: directory
+    
+- name: Copy the dotnet 6.0 package
+  ansible.windows.win_get_url:
+    url: "{{ prerequisites_source }}/dotnet-hosting-6.0.10-win.exe"
+    dest: "{{ prerequisites_folder }}\\prerequisites"
+
+- name: Install dotnet 6.0
+  win_package:
+    path: "{{ prerequisites_folder }}\\prerequisites\\dotnet-hosting-6.0.10-win.exe"
+    state: present
+    arguments: /q /norestart
