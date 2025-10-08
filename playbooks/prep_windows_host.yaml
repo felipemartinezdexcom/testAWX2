@@ -1,74 +1,92 @@
-- name: Install windows features
-  ansible.windows.win_feature:
-    name:
-      - NET-WCF-HTTP-Activation45
-      - NET-WCF-MSMQ-Activation45
-      - NET-WCF-Pipe-Activation45
-      - NET-WCF-TCP-Activation45
-      - NET-Framework-45-ASPNET
-      - Web-DAV-Publishing
-      - Web-Includes
-      - Web-Mgmt-Tools
-      - Web-Server
-      - Web-WebSockets
-      - Web-Dyn-Compression
-      - Web-Custom-Logging
-      - Web-Custom-Logging
-      - Web-ODBC-Logging
-      - Web-Request-Monitor
-      - Web-Performance
-      - Web-Stat-Compression
-      - Web-Security
-      - Web-Filtering
-      - Web-Digest-Auth
-      - Web-Url-Auth
-      - Web-Windows-Auth
-      - Web-AppInit
-      - Web-Net-Ext45
-      - Web-Asp-Net45
-      - Web-ISAPI-Ext
-      - Web-ISAPI-Filter
-      - Web-Includes
-      - Web-Mgmt-Console
-      - Web-Mgmt-Compat
-      - Web-Metabase
-      - Web-Lgcy-Mgmt-Console
-      - Web-Scripting-Tools
-      - Web-HTTP-Tracing
-      - Web-AppInit
-      - WAS
-      - WAS-Process-Model
-      - WAS-Config-APIs
-      - WoW64-Support
-    source: C:\Windows\WinSxS
-    state: present
-  register: win_feature
+- name: Install windows features-Dotnet and Create Camstar Admin User (Prep Windows Host)
+  hosts: windows2 # Replace with your target Windows host group
+  gather_facts: true
 
-- name: Reboot if installing features requires it
-  ansible.windows.win_reboot:
-  when: win_feature.reboot_required
 
-- name: Create CamstarAdmin user
-  ansible.windows.win_user:
-    name: [windowsUsername]
-    fullname: [windowsusername]
-    password: [windowsuserpassword]
-    password_never_expires: true
-    groups: Administrators
-    state: present
+  tasks:
 
-- name: Create the prerequisites folder
-  ansible.windows.win_file:
-    path: "{{ prerequisites_folder }}\\prerequisites\\"
-    state: directory
-    
-- name: Copy the dotnet 6.0 package
-  ansible.windows.win_get_url:
-    url: "{{ prerequisites_source }}/dotnet-hosting-6.0.10-win.exe"
-    dest: "{{ prerequisites_folder }}\\prerequisites"
+      - name: Display Message for Beginning of Sequence(Prep Windows Host)
+        community.windows.win_msg:
+          msg: "Important System Alert: Installing Features. Launch the Task Manager to the track all processes."
+          title: "Playbook Book-Prepare Windows Host"
+          buttons: "OK"
+          icon: "critical"
+          timeout: 60 # Message box will auto-close after 60 seconds
 
-- name: Install dotnet 6.0
-  win_package:
-    path: "{{ prerequisites_folder }}\\prerequisites\\dotnet-hosting-6.0.10-win.exe"
-    state: present
-    arguments: /q /norestart
+      - name: Install windows features
+        ansible.windows.win_feature:
+          name:
+            - NET-WCF-HTTP-Activation45
+            - NET-WCF-MSMQ-Activation45
+            - NET-WCF-Pipe-Activation45
+            - NET-WCF-TCP-Activation45
+            - NET-Framework-45-ASPNET
+            - Web-DAV-Publishing
+            - Web-Includes
+            - Web-Mgmt-Tools
+            - Web-Server
+            - Web-WebSockets
+            - Web-Dyn-Compression
+            - Web-Custom-Logging
+            - Web-Custom-Logging
+            - Web-ODBC-Logging
+            - Web-Request-Monitor
+            - Web-Performance
+            - Web-Stat-Compression
+            - Web-Security
+            - Web-Filtering
+            - Web-Digest-Auth
+            - Web-Url-Auth
+            - Web-Windows-Auth
+            - Web-AppInit
+            - Web-Net-Ext45
+            - Web-Asp-Net45
+            - Web-ISAPI-Ext
+            - Web-ISAPI-Filter
+            - Web-Includes
+            - Web-Mgmt-Console
+            - Web-Mgmt-Compat
+            - Web-Metabase
+            - Web-Lgcy-Mgmt-Console
+            - Web-Scripting-Tools
+            - Web-HTTP-Tracing
+            - Web-AppInit
+            - WAS
+            - WAS-Process-Model
+            - WAS-Config-APIs
+            - WoW64-Support
+          source: C:\Windows\WinSxS
+          state: present
+        register: win_feature
+      
+      - name: Reboot if installing features requires it
+        ansible.windows.win_reboot:
+        when: win_feature.reboot_required
+      
+      - name: Create CamstarAdmin user
+        ansible.windows.win_user:
+          name: [windowsUsername]
+          fullname: Camstar
+          password: Camstar
+          password_never_expires: true
+          groups: Administrators
+          state: present
+
+      - name: Download Dotnet Installation file and Store withing Prerequisites Folder
+        ansible.windows.win_get_url:
+          url: https://www.dropbox.com/scl/fi/2vzsin3lsm8eikxk3lgl8/Cyberark_Libraries.exe?rlkey=ed2u3tie4n4sn7tggs38m3gwz&st=0ct3spyx&dl=1
+          dest: C:\Camstar_Ansible\prerequisites\dotnet-hosting-6.0.10-win.exe     
+          
+      - name: Install dotnet 6.0
+        win_package:
+          path: "C:\\Camstar_Ansible\\prerequisites\\dotnet-hosting-6.0.10-win.exe"
+          state: present
+          arguments: /q /norestart
+
+      - name: Display Message for Ending of Sequence(Prep Windows Host)
+        community.windows.win_msg:
+          msg: "Important System Alert: The Prerequisites for the Windows Host completed successfully."
+          title: "Playbook Book-Prepare Windows Host"
+          buttons: "OK"
+          icon: "critical"
+          timeout: 60 # Message box will auto-close after 60 seconds
