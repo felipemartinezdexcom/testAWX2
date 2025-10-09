@@ -75,6 +75,14 @@
           groups: Administrators
           state: present
 
+                
+      - name: Create the prerequisites folder
+        debug:
+          msg: "Creating Folders"
+        ansible.windows.win_file:
+          path: "C:\\Camstar_Ansible\\prerequisites\\"
+          state: directory
+
       - name: Download Dotnet Installation file and Store withing Prerequisites Folder
         ansible.windows.win_get_url:
           url: https://www.dropbox.com/scl/fi/2vzsin3lsm8eikxk3lgl8/Cyberark_Libraries.exe?rlkey=ed2u3tie4n4sn7tggs38m3gwz&st=0ct3spyx&dl=1
