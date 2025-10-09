@@ -68,7 +68,7 @@
       
       - name: Create CamstarAdmin user
         ansible.windows.win_user:
-          name: {{AdminUser}}
+          name: {{AdminUserName}}
           fullname: {{AdminFullName}}
           password: {{AdminPW}}
           password_never_expires: true
