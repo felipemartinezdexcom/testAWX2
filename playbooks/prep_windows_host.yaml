@@ -1,7 +1,10 @@
 - name: Install windows features-Dotnet and Create Camstar Admin User (Prep Windows Host)
   hosts: windows2 # Replace with your target Windows host group
   gather_facts: true
-
+  vars:
+    AdminUserName: ""
+    AdminFullName: ""
+    AdminPW: ""
 
   tasks:
 
@@ -65,9 +68,9 @@
       
       - name: Create CamstarAdmin user
         ansible.windows.win_user:
-          name: [windowsUsername]
-          fullname: Camstar
-          password: Camstar
+          name: {{AdminUser}}
+          fullname: {{AdminFullName}}
+          password: {{AdminPW}}
           password_never_expires: true
           groups: Administrators
           state: present
