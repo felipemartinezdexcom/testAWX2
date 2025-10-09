@@ -77,8 +77,6 @@
 
                 
       - name: Create the prerequisites folder
-        debug:
-          msg: "Creating Folders"
         ansible.windows.win_file:
           path: "C:\\Camstar_Ansible\\prerequisites\\"
           state: directory
