@@ -1,0 +1,4 @@
+      - name: Create the prerequisites folder
+        ansible.windows.win_file:
+          path: "C:\\Camstar_Ansible\\prerequisites\\"
+          state: directory
