@@ -1,3 +1,12 @@
+- name: Create Test Directory
+  hosts: windows2 # Replace with your target Windows host group
+  gather_facts: true
+  vars:
+    AdminUserName: ""
+    AdminFullName: ""
+    AdminPW: ""
+
+  tasks:     
       - name: Create the prerequisites folder
         ansible.windows.win_file:
           path: "C:\\Camstar_Ansible\\prerequisites\\"
